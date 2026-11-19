@@ -1,0 +1,139 @@
+{
+  "version": "gbdt-1.0.0",
+  "trained_at": "2026-11-19T00:26:23.472446+00:00",
+  "algorithm": "HistGradientBoostingClassifier",
+  "auc": 0.9769,
+  "average_precision": 0.8958,
+  "precision": 0.9169,
+  "recall": 0.7236,
+  "samples": 72768,
+  "fraud_rate": 0.0766,
+  "train_size": 58214,
+  "test_size": 14554,
+  "dataset": {
+    "seed": 42,
+    "days": 60,
+    "customers": 900
+  },
+  "feature_importance": [
+    {
+      "feature": "channel_online",
+      "label": "Kênh online",
+      "importance": 0.2427
+    },
+    {
+      "feature": "hour_sin",
+      "label": "Giờ giao dịch",
+      "importance": 0.2122
+    },
+    {
+      "feature": "hour_cos",
+      "label": "Giờ giao dịch",
+      "importance": 0.1787
+    },
+    {
+      "feature": "category_risk",
+      "label": "Rủi ro ngành hàng",
+      "importance": 0.1259
+    },
+    {
+      "feature": "velocity_1h",
+      "label": "Tần suất 1 giờ",
+      "importance": 0.0845
+    },
+    {
+      "feature": "amount_log",
+      "label": "Giá trị giao dịch",
+      "importance": 0.0815
+    },
+    {
+      "feature": "amount_ratio_log",
+      "label": "So với chi tiêu thường ngày",
+      "importance": 0.041
+    },
+    {
+      "feature": "country_mismatch",
+      "label": "Lệch quốc gia IP/thẻ",
+      "importance": 0.017
+    },
+    {
+      "feature": "velocity_24h",
+      "label": "Tần suất 24 giờ",
+      "importance": 0.0097
+    },
+    {
+      "feature": "new_device",
+      "label": "Thiết bị mới",
+      "importance": 0.0065
+    },
+    {
+      "feature": "distinct_merchants_24d",
+      "label": "Số merchant trong 24 giờ",
+      "importance": 0.0002
+    },
+    {
+      "feature": "is_night",
+      "label": "Giao dịch ban đêm",
+      "importance": 0.0001
+    },
+    {
+      "feature": "account_age_days",
+      "label": "Tuổi tài khoản",
+      "importance": 0.0
+    }
+  ],
+  "baseline": {
+    "amount_log": {
+      "mean": 12.973195862966,
+      "std": 1.376042919980553
+    },
+    "hour_sin": {
+      "mean": -0.292318948817773,
+      "std": 0.644831008523301
+    },
+    "hour_cos": {
+      "mean": 0.2502114611454867,
+      "std": 0.6604065621420909
+    },
+    "is_night": {
+      "mean": 0.2997904284192806,
+      "std": 0.458166047899083
+    },
+    "country_mismatch": {
+      "mean": 0.05582849486377847,
+      "std": 0.22959023068289194
+    },
+    "new_device": {
+      "mean": 0.044147455938434055,
+      "std": 0.20542263281488263
+    },
+    "velocity_1h": {
+      "mean": 1.238842890026454,
+      "std": 0.7404773718293935
+    },
+    "velocity_24h": {
+      "mean": 2.093602913388532,
+      "std": 1.3050859554451502
+    },
+    "amount_ratio_log": {
+      "mean": 0.5577844549365584,
+      "std": 0.5861560459202282
+    },
+    "distinct_merchants_24d": {
+      "mean": 1.0632837461778955,
+      "std": 1.234745534447631
+    },
+    "account_age_days": {
+      "mean": 786.5558284948638,
+      "std": 424.11522169191653
+    },
+    "category_risk": {
+      "mean": 0.23672398392139352,
+      "std": 0.2042204290195152
+    },
+    "channel_online": {
+      "mean": 0.5785721647713609,
+      "std": 0.49378782378987657
+    }
+  }
+}

@@ -1,0 +1,27 @@
+[project]
+name = "fraudlens"
+version = "1.0.0"
+description = "Hệ thống chấm điểm rủi ro giao dịch có AI giải thích cảnh báo"
+requires-python = ">=3.12"
+
+[tool.ruff]
+line-length = 110
+target-version = "py312"
+extend-exclude = [".venv", "frontend", "data"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+ignore = [
+    "B008",   # FastAPI Depends() trong default là pattern chuẩn
+    "BLE001", # cần fallback khi provider AI lỗi
+    "UP017",  # dùng timezone.utc cho rõ nghĩa
+    "RUF001", # ký tự Unicode có nghĩa trong tiếng Việt
+    "E501",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"app/ml/synthetic.py" = ["RUF022"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

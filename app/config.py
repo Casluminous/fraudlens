@@ -1,0 +1,49 @@
+from __future__ import annotations
+
+from functools import lru_cache
+from pathlib import Path
+
+from pydantic_settings import BaseSettings, SettingsConfigDict
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+class Settings(BaseSettings):
+    model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
+
+    app_name: str = "FraudLens"
+    environment: str = "development"
+    database_url: str = f"sqlite:///{(BASE_DIR / 'data' / 'fraudlens.db').as_posix()}"
+    jwt_secret: str = "dev-only-change-me-in-production"
+    access_token_minutes: int = 45
+    refresh_token_days: int = 7
+    cors_origins: str = "http://localhost:5173,http://127.0.0.1:5173"
+    seed_on_start: bool = True
+    demo_mode: bool = True
+    cookie_secure: bool = False
+
+    ai_enabled: bool = True
+    ai_provider: str = "auto"  # auto | openai | anthropic | offline
+    ai_model: str = "gpt-4o-mini"
+    anthropic_model: str = "claude-3-5-sonnet-latest"
+    openai_api_key: str = ""
+    anthropic_api_key: str = ""
+    ai_timeout_seconds: float = 45.0
+
+    model_dir: Path = BASE_DIR / "app" / "ml" / "artifacts"
+
+    @property
+    def cors_origin_list(self) -> list[str]:
+        return [origin.strip() for origin in self.cors_origins.split(",") if origin.strip()]
+
+    @property
+    def is_production(self) -> bool:
+        return self.environment.lower() in {"production", "prod"}
+
+
+@lru_cache
+def get_settings() -> Settings:
+    return Settings()
+
+
+settings = get_settings()
